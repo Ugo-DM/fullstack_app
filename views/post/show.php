@@ -1,4 +1,5 @@
 <?php
+
 use App\Connection;
 use App\Model\Post;
 use App\Model\Category;
@@ -31,12 +32,12 @@ $categories = $query->fetchAll();
 
 <h1><?= htmlentities($post->getName()) ?></h1>
 <p class="text-muted"><?= $post->getCreatedAt()->format('d F Y') ?></p>
-<?php foreach($categories as $k => $category): ?>
-    <?php if($k > 0): ?>
-    , 
+<?php foreach ($categories as $k => $category) : ?>
+    <?php if ($k > 0) : ?>
+        ,
     <?php endif;
-        $category_url = $router->url('category', ['id' => $category->getID(), 'slug' => $category->getSlug()]);
-     ?>
+    $category_url = $router->url('category', ['id' => $category->getID(), 'slug' => $category->getSlug()]);
+    ?>
     <a href="<?= $category_url ?>"><?= htmlentities($category->getName()) ?></a>
 <?php endforeach ?>
 <p><?= $post->getFormattedContent() ?></p>

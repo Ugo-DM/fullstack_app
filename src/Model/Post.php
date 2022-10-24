@@ -52,4 +52,19 @@ class Post {
         return $this->id;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return Category[]
+     */
+    public function getCategories(): array
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): void{
+        $this->categories[] = $category;
+        $category->setPost($this);
+    }
+
 }
