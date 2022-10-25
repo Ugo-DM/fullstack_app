@@ -1,6 +1,12 @@
 <?php
 require '../vendor/autoload.php';
 
+define('DEBUG_TIME', microtime(true));
+
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
 // Rewritting url to get pagination working.
 if(isset($_GET['page']) && $_GET['page'] === '1') {
     
