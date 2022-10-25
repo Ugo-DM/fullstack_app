@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+// Creating Text Class to create Excerpt with specific parameters.
 class Text {
 
     public static function excerpt(string $content, int $limit = 60)

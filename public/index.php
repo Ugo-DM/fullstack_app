@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 
+// Rewritting url to get pagination working.
 if(isset($_GET['page']) && $_GET['page'] === '1') {
     
     $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
@@ -16,6 +17,7 @@ if(isset($_GET['page']) && $_GET['page'] === '1') {
     exit();
 }
 
+// Instanciating Router class and configuring routes.
 $router = new App\Router(dirname(__DIR__) . '/views');
 $router
     ->get('/', 'post/index', 'home')

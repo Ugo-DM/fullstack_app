@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 
+// Creating Cartegory Class
+
 class Category {
 
     private $id;
