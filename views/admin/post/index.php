@@ -28,7 +28,7 @@ $link = $router->url('admin_posts');
             Titre
         </th>
         <th>
-            Actions
+            <a href="<?= $router->url('admin_post_new') ?>" class="btn btn-primary"> Nouvel article</a>
         </th>
     </thead>
     <tbody>
@@ -46,7 +46,7 @@ $link = $router->url('admin_posts');
                     <a href="<?= $router->url('admin_post', ['id' => $post->getID()]) ?>" class="btn btn-primary">
                         Editer
                     </a>
-                    <form action="<?= $router->url('admin_post_delete', ['id' => $post->getID()]) ?>" method="POST" onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')" style="display:inline>
+                    <form action="<?= $router->url('admin_post_delete', ['id' => $post->getID()]) ?>" method="POST" onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')" style="display:inline">
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
                 </td>

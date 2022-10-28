@@ -18,5 +18,5 @@ class PostValidator extends AbstractValidator
             return !$table->exists($field, $value, $postID);
         }, ['slug', 'name'], 'Cette valeur est déjà utilisée');
     }
-    
+
 }

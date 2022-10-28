@@ -11,6 +11,12 @@ class PostTable extends Table
     protected $table = "post";
     protected $class = Post::class;
 
+    /**
+     * Function to update Table elements in Database
+     *
+     * @param Post $post
+     * @return void
+     */
     public function update(Post $post): void
     {
         $query = $this->pdo->prepare("UPDATE {$this->table} SET name = :name, slug = :slug, created_at = :created, content = :content WHERE id = :id");
@@ -22,8 +28,23 @@ class PostTable extends Table
             'created' => $post->getCreatedAt()->format('Y-m-d H:i:s')
         ]);
         if ($ok === false) {
-            throw new \Exception("Impossible de supprimer l'enregistrement dans la table {$this->table}");
+            throw new \Exception("Impossible de modifier l'enregistrement dans la table {$this->table}");
         }
+    }
+
+    public function create(Post $post): void
+    {
+        $query = $this->pdo->prepare("INSERT INTO {$this->table} SET name = :name, slug = :slug, created_at = :created, content = :content");
+        $ok = $query->execute([
+            'name' => $post->getName(),
+            'slug' => $post->getSlug(),
+            'content' => $post->getContent(),
+            'created' => $post->getCreatedAt()->format('Y-m-d H:i:s')
+        ]);
+        if ($ok === false) {
+            throw new \Exception("Impossible de créer l'enregistrement dans la table {$this->table}");
+        }
+        $post->setID($this->pdo->lastInsertId());
     }
 
     public function delete(int $id): void

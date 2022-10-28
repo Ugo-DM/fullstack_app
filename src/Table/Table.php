@@ -35,10 +35,10 @@ abstract class Table
     }
 
     /**
-     * Vérifie si une valeur existe dans la table
+     * Checks if a value already exists in a Table
      *
-     * @param string $field Champs à rechercher
-     * @param mixed $value  Valeur associée au champs
+     * @param string $field Field to search
+     * @param mixed $value Value associated to field
      * @return boolean
      */
     public function exists(string $field, $value, ?int $except = null): bool

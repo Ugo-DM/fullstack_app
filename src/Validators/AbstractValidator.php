@@ -1,4 +1,7 @@
 <?php
+
+// Mother of Validation Class
+
 namespace App\Validators;
 
 use App\Validator;
