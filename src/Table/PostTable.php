@@ -19,7 +19,6 @@ class PostTable extends Table
      */
     public function updatePost(Post $post): void
     {
-
         $this->update([
             'name' => $post->getName(),
             'slug' => $post->getSlug(),
@@ -37,6 +36,15 @@ class PostTable extends Table
             'created_at' => $post->getCreatedAt()->format('Y-m-d H:i:s')
         ]);
         $post->setID($id);
+    }
+
+    public function attachedCategories(int $id, array $categories)
+    {
+        $this->pdo->exec('DELETE FROM post_category WHERE post_id = ' . $id);
+        $query = $this->pdo->prepare('INSERT INTO post_category SET post_id = ?, category_id = ?');
+        foreach ($categories as $category) {
+            $query->execute([$id, $category]);
+        }
     }
 
     public function findPaginated()
