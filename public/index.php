@@ -31,6 +31,7 @@ $router
     ->get('/', 'post/index', 'home')
     ->get('/blog/category/[*:slug]-[i:id]', 'category/show', 'category')
     ->get('/blog/[*:slug]-[i:id]', 'post/show', 'post')
+    ->match('/signup', 'auth/signup', 'signup')
     ->match('/login', 'auth/login', 'login')
     ->post('/logout', 'auth/logout', 'logout')
     //ADMIN
