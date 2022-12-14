@@ -1,1 +1,1 @@
-Ici test
+PHP App created following Grafikart tutorial
